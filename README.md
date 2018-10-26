@@ -8,5 +8,5 @@ fill out your `username` and `password` on Instagram
 then, input hashtags after `#`  
 
 ## _warning_
-instagram's xpath is regularly changes.
+instagram's xpath and css selector is regularly changes.
 please check xpaths on browser if do not run scripts.
