@@ -4,41 +4,41 @@ from selenium.webdriver.common.keys import Keys
 import time
 import urllib
 
+# hash tags title
 tagName = input('#')
-username = 'i_wanna_likes_for_you'
-password = 'r19971104'
+
+username = 'i_wanna_likes_for_you' #username
+password = 'r19971104' #password
 browserURL = 'http://www.yahoo.co.jp/'
+tagSearchURL = "https://www.instagram.com/explore/tags/{}/?hl=ja" #tagsearch with hashtag
 
 # Xpaths
-loginPath = '//*[@id="react-root"]/section/main/article/div[2]/div[2]/p/a'
-usernamePath = '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div/div[1]/input'
-passwordPath = '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/div[1]/input'#パスワード
-mediaSelector = 'div._9AhH0'
-notNowPath = '//*[@id="react-root"]/div/div[2]/a[2]'
-popPath = '/html/body/div[2]/div/div/div/div[3]/button[2]' #ログイン後のpopの後でボタン
-nextPagerSelector = 'a.coreSpriteRightPaginationArrow' #次へボタン
-likeXpath = '/html/body/div[2]/div/div[2]/div/article/div[2]/section[1]/span[1]/button'#いいね
+loginPath = '//*[@id="react-root"]/section/main/article/div[2]/div[2]/p/a' #login botton
+usernamePath = '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div/div[1]/input'#when login
+passwordPath = '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/div[1]/input'#when login
+mediaSelector = 'div._9AhH0' # Post's selector
+popPath = '/html/body/div[2]/div/div/div/div[3]/button[2]' # 'after' on Notification pop when logged in
+nextPagerSelector = 'a.coreSpriteRightPaginationArrow' #nextpage
+likeXpath = '/html/body/div[2]/div/div[2]/div/article/div[2]/section[1]/span[1]/button'#like
 
 
 driver = webdriver.Chrome()
 
-# ヤフーを開いて検索窓に入力　クリック
+#search Instagram on yahoo
 driver.get(browserURL)
 elem = driver.find_element_by_name('p')
 elem.send_keys('Instagram')
 elem.send_keys(Keys.RETURN)
-
 driver.implicitly_wait(2)
 
+# now here is on instagram
 driver.find_element_by_link_text('Instagram').click()
-
 driver.implicitly_wait(2)
-
 driver.find_element_by_link_text('ログインする').click()
-
-#driver.get(login)
 driver.find_element_by_xpath(loginPath).click()
 driver.implicitly_wait(5)
+
+#login
 usernameField = driver.find_element_by_xpath(usernamePath)
 usernameField.send_keys(username)
 passwordField = driver.find_element_by_xpath(passwordPath)
@@ -46,12 +46,12 @@ passwordField.send_keys(password)
 time.sleep(1)
 passwordField.send_keys(Keys.RETURN)
 
-# ログインした瞬間にお知らせ機能のポップが出るのを対処
+# click 'after' on Notification pop when logged in
 time.sleep(5)
 popIgnore = driver.find_element_by_xpath(popPath)
 popIgnore.click()
 
-tagSearchURL = "https://www.instagram.com/explore/tags/{}/?hl=ja"
+# hashtags
 encodedTag = urllib.parse.quote(tagName)
 encodedURL = tagSearchURL.format(encodedTag)
 driver.get(encodedURL)
@@ -63,10 +63,10 @@ for media in mediaList:
 
     while True:
         try:
-            time.sleep(3)
+            time.sleep(2)
             driver.find_element_by_xpath(likeXpath).click()
             driver.implicitly_wait(10)
             driver.find_element_by_css_selector(nextPagerSelector).click()
         except:
             break
-    break #for文自体も終了させる
+    break #when END
