@@ -7,8 +7,8 @@ import urllib
 # hash tags title
 tagName = input('#')
 
-username = 'i_wanna_likes_for_you' #username
-password = 'r19971104' #password
+username = '' #username
+password = '' #password
 browserURL = 'http://www.yahoo.co.jp/'
 tagSearchURL = "https://www.instagram.com/explore/tags/{}/?hl=ja" #tagsearch with hashtag
 
