@@ -4,7 +4,7 @@
 fill out your `username` and `password` on Instagram  
 
 ## Usage  
-`$ python instagramScraping.py` on command line tool  
+`$ python instagramScraping.py` on command line
 then, input hashtags after `#`  
 
 ## _warning_
