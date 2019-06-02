@@ -23,9 +23,9 @@ loginPath = '//*[@id="react-root"]/section/main/article/div[2]/div[2]/p/a' #logi
 usernamePath = '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/div[1]/input' #when login
 passwordPath = '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/div[1]/input' #when login
 mediaSelector = 'div._9AhH0' # Post's selector
-popPath = '/html/body/div[2]/div/div/div[3]/button[2]'# 'after' on Notification pop when logged in
+popPath = '/html/body/div[3]/div/div/div[3]/button[2]'# 'after' on Notification pop when logged in
 nextPagerSelector = 'a.coreSpriteRightPaginationArrow' #nextpage
-likeXpath = '/html/body/div[2]/div[2]/div/article/div[2]/section[1]/span[1]/button'
+likeXpath = '/html/body/div[3]/div[2]/div/article/div[2]/section[1]/span[1]'
 
 driver = webdriver.Chrome()
 
@@ -54,7 +54,7 @@ driver.implicitly_wait(5)
 popIgnore = driver.find_element_by_xpath(popPath)
 popIgnore.click()
 
-ハッシュタグをエンコーディングする
+#ハッシュタグをエンコーディングする
 encodedTag = urllib.parse.quote(tagName)
 encodedURL = tagSearchURL.format(encodedTag)
 driver.get(encodedURL)
