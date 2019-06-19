@@ -1,11 +1,13 @@
 # Automatic Likes tool
+*Like* to the specified hashtag on Instagram
 
 ## Setup  
-fill out your `username` and `password` on Instagram  
+Enter your Instagram username and password in the `.env`
+See sample : `.env.sample`
 
 ## Usage  
-`$ python instagramScraping.py` on command line
-then, input hashtags after `#`  
+`$ python instagramScraping.py`
+`#` Will be output, you can enter the hashtag you want to like
 
 ## _warning_
 instagram's xpath and css selector is regularly changes.
