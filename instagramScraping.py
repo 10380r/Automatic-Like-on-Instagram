@@ -3,15 +3,17 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import urllib
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 
 # hash tags title
 tagName = input('#')
 
-# ユーザーネームとパスワードを別ファイルから取得する
-with open('keys.txt', 'r') as f:
-    keys = f.readlines()
-    username = keys[0]
-    password = keys[1]
+load_dotenv(join(dirname(__file__), '.env'))
+
+username = os.environ.get('username')
+password = os.environ.get('password')
 
 # 最初に立ち上げるURL。今回は映えを求めてyahooからスタートする
 browserURL = 'http://www.yahoo.co.jp/'
