@@ -1,9 +1,9 @@
 # Automatic Likes tool
-*Like* to the specified hashtag on Instagram
+**Like** to the specified hashtag on Instagram
 
 ## Setup  
-Enter your Instagram username and password in the `.env`
-See sample : `.env.sample`
+Enter your Instagram username and password in the `.env`  
+See sample : `.env.sample`  
 
 ## Usage  
 `$ python instagramScraping.py`
